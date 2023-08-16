@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Zixtractor',
       theme: ThemeData(
         primarySwatch: Colors.grey,
@@ -156,22 +157,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Zixtractor"),
-      ),
-      body: Center(
-        child: FloatingActionButton.extended(
-          label: const Text("Select Zip File"),
-          icon: const Icon(Icons.folder_zip),
-          onPressed: () async {
-            FilePickerResult? file = await FilePicker.platform.pickFiles();
-            if (file == null) return;
-            await requestStoragePermission();
-            File zipFile = File((file.paths.first).toString());
-            // ignore: use_build_context_synchronously
-            extractZipFile(zipFile, context);
-          },
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Zixtractor"),
+        ),
+        body: Center(
+          child: FloatingActionButton.extended(
+            label: const Text("Select Zip File"),
+            icon: const Icon(Icons.folder_zip),
+            onPressed: () async {
+              FilePickerResult? file = await FilePicker.platform.pickFiles();
+              if (file == null) return;
+              await requestStoragePermission();
+              File zipFile = File((file.paths.first).toString());
+              // ignore: use_build_context_synchronously
+              extractZipFile(zipFile, context);
+            },
+          ),
         ),
       ),
     );
