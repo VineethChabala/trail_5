@@ -59,8 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
     // Directory? root =
     //   Directory("${directory!.path}/Downloads");
 
-    Future<Directory?> diretory = getOtherDirectory();
-
     // ignore: unnecessary_null_comparison
     if (directory == null) {
       return;
