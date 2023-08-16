@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:path/path.dart';
-import 'package:easy_folder_picker/DirectoryList.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_folder_picker/FolderPicker.dart';
 import 'package:path_provider/path_provider.dart';
@@ -50,10 +49,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   Future<Directory?> getOtherDirectory() async {
-  
     return null;
   }
 
@@ -74,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Directory? newDirectory = await FolderPicker.pick(
       allowFolderCreation: true,
       context: context,
-      rootDirectory: directory ,
+      rootDirectory: directory,
     );
 
     if (newDirectory == null) {
